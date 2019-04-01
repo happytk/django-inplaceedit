@@ -15,13 +15,22 @@
 # along with this programe.  If not, see <http://www.gnu.org/licenses/>.
 
 from inplaceeditform.commons import get_module_name
+import logging
 
 
 class SuperUserPermEditInline(object):
 
     @classmethod
     def can_edit(cls, field):
-        return field.request.user.is_authenticated and field.request.user.is_superuser
+        request = field.request
+        if request is None:
+            try:
+                from django_global_request.middleware import get_request
+                request = get_request()
+            except ImportError:
+                logging.critical('permission check cannot be done. because the request object is None')
+                return False
+        return request.user.is_authenticated and request.user.is_superuser
 
 
 class AdminDjangoPermEditInline(SuperUserPermEditInline):

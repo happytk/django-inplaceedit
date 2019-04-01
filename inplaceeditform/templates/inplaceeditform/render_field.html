@@ -1,22 +1,19 @@
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 {% block form %}
     <form class="inplaceeditform {% block formclass %}{% endblock %}{{ class_inplace }}" action="{{ inplace_save_url }}" enctype=multipart/form-data>
-        {{ field }}
+        {{ field | as_crispy_field }}
         <span class="field_id" style="display:none">{{ field.auto_id }}</span>
         {% block actions %}
             {% block apply %}
-                <button class="apply {% block classapply %}{% endblock %}" title="{% trans "Apply change" %}" type="button">
-                    <span>
+                <button class="btn btn-primary apply {% block classapply %}{% endblock %}" title="{% trans "Apply change" %}" type="button">
                     {% trans "Save" %}
-                    </span>
                 </button>
             {% endblock %}
             {% block cancel %}
-                <button class="cancel {% block classcancel %}{% endblock %}" title="{% trans "Cancel change" %}" type="button">
-                    <span>
+                <button class="btn cancel {% block classcancel %}{% endblock %}" title="{% trans "Cancel change" %}" type="button">
                     {% trans "Cancel" %}
-                    </span>
                 </button>
             {% endblock %}
         {% endblock %}

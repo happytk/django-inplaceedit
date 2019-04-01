@@ -19,9 +19,9 @@ from django.utils.translation import ugettext_lazy as _
 
 
 INPLACEEDIT_EDIT_EMPTY_VALUE = (getattr(settings, 'INPLACEEDIT_EDIT_EMPTY_VALUE', None) and
-                                _(settings.INPLACEEDIT_EDIT_EMPTY_VALUE) or _('Doubleclick to edit'))
+                                _(settings.INPLACEEDIT_EDIT_EMPTY_VALUE) or _(' CLICK TO EDIT'))
 INPLACEEDIT_AUTO_SAVE = getattr(settings, 'INPLACEEDIT_AUTO_SAVE', False)
-INPLACEEDIT_EVENT = getattr(settings, 'INPLACEEDIT_EVENT', 'dblclick')
+INPLACEEDIT_EVENT = getattr(settings, 'INPLACEEDIT_EVENT', 'click')
 INPLACEEDIT_DISABLE_CLICK = getattr(settings, 'INPLACEEDIT_DISABLE_CLICK', True)
 INPLACEEDIT_EDIT_MESSAGE_TRANSLATION = (getattr(settings, 'INPLACEEDIT_EDIT_MESSAGE_TRANSLATION', None) and
                                         _(settings.INPLACEEDIT_EDIT_MESSAGE_TRANSLATION) or _('Write a translation'))

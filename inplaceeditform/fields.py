@@ -23,7 +23,7 @@ import django
 from copy import deepcopy
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.admin.widgets import AdminDateWidget, AdminSplitDateTime, AdminTimeWidget
 from django.forms.models import modelform_factory
 from django.template.loader import render_to_string
@@ -121,7 +121,7 @@ class BaseAdaptorField(object):
 
     def get_field(self):
         field = self.get_form()[self.field_name]
-        field = self._adding_size(field)
+        # field = self._adding_size(field)
         return field
 
     def get_value_editor(self, value):
